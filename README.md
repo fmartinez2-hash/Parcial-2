@@ -2,7 +2,7 @@
 // ...existing code...
 # Parcial 2 - Gestión de Empleados
 
-- Autor: (tu nombre)
+- Autor: Florencio Martínez Sánchez
 - Versión: 1.0
 - Descripción: Proyecto simple en Java para gestionar empleados (clases: `Empleado`, `Empleados`, `Cargos`, `Constantes`). Incluye tests JUnit 5 para validación de parámetros (análisis caja negra).
 
