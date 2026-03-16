@@ -1,0 +1,31 @@
+// ...existing code...
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Tests para la gestión de la colección de empleados {@link Empleados}.
+ */
+public class EmpleadosTest {
+
+    @Test
+    void aumentarSalarioTodos() {
+        Empleados gestores = new Empleados();
+        gestores.altaEmpleados();
+        Empleado[] antes = gestores.getLista();
+
+        double[] salariosAntes = new double[antes.length];
+        for (int i = 0, j = 0; i < antes.length; i++) {
+            if (antes[i] != null) salariosAntes[j++] = antes[i].getSalario();
+        }
+
+        gestores.aumentarSalario(10.0);
+
+        Empleado[] despues = gestores.getLista();
+        for (int i = 0, j = 0; i < despues.length; i++) {
+            if (despues[i] != null) {
+                assertEquals(salariosAntes[j++] * 1.10, despues[i].getSalario(), 0.001);
+            }
+        }
+    }
+}
+// ...existing code...

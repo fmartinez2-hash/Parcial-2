@@ -1,0 +1,48 @@
+// ...existing code...
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Tests JUnit 5 para la clase {@link Empleado}.
+ */
+public class EmpleadoTest {
+
+    @Test
+    void crearEmpleadoValido() {
+        Empleado e = new Empleado("Ana López", Cargos.DESARROLLADOR, 15000.0);
+        assertEquals("Ana López", e.getNombre());
+        assertEquals(Cargos.DESARROLLADOR, e.getCargo());
+        assertEquals(15000.0, e.getSalario());
+    }
+
+    @Test
+    void nombreVacioDeberiaLanzar() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Empleado("", Cargos.DESARROLLADOR, 15000.0));
+    }
+
+    @Test
+    void nombreUnaPalabraDeberiaLanzar() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Empleado("Ana", Cargos.DESARROLLADOR, 15000.0));
+    }
+
+    @Test
+    void cargoInvalidoDeberiaLanzar() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Empleado("Luis Gómez", "CEO", 20000.0));
+    }
+
+    @Test
+    void salarioNegativoDeberiaLanzar() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Empleado("Laura Díaz", Cargos.GERENTE, -100.0));
+    }
+
+    @Test
+    void salarioPorDebajoConvenioDeberiaLanzar() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Empleado("Pedro Soto", Cargos.DISENADORA, 1000.0));
+    }
+}
+// ...existing code...
